@@ -89,6 +89,7 @@
 
   function setText(id, text) { var el = document.getElementById(id); if (el) el.textContent = text; }
   function setHref(id, href) { var el = document.getElementById(id); if (el && href) el.href = href; }
+  function hideIfEmpty(id, value) { var el = document.getElementById(id); if (el && !value) el.style.display = "none"; }
 
   function loadDynamic() {
     var sb = supabase();
@@ -140,7 +141,9 @@
     setHref("link-apk", CFG.APK_URL);
     setHref("link-github", CFG.GITHUB_URL);
     setHref("link-telegram", CFG.TELEGRAM_URL);
+    hideIfEmpty("link-telegram", CFG.TELEGRAM_URL);
     setHref("link-discord", CFG.DISCORD_URL);
+    hideIfEmpty("link-discord", CFG.DISCORD_URL);
     setHref("link-support-mail", CFG.SUPPORT_EMAIL ? "mailto:" + CFG.SUPPORT_EMAIL : "#");
     setText("support-email", CFG.SUPPORT_EMAIL || "support@example.com");
     setText("year", String(new Date().getFullYear()));

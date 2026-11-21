@@ -5,12 +5,12 @@
 window.X05_CONFIG = Object.freeze({
   SUPABASE_URL: "https://qewqhswybbeffdosdboj.supabase.co",
   SUPABASE_ANON_KEY: "sb_publishable_IxLW__LOzTYFhy3oAwBBCg_pyK4ezax",
-  SITE_BASE_URL: "https://x05-anime.example",
+  SITE_BASE_URL: "https://x05-anime.pages.dev",
   APP_SCHEME: "x05",
   APK_URL:
-    "https://github.com/x05-anime/app/releases/latest/download/X05-ANIME-universal-release.apk",
-  GITHUB_URL: "https://github.com/x05-anime/app",
-  TELEGRAM_URL: "https://t.me/x05anime",
-  DISCORD_URL: "https://discord.gg/x05anime",
-  SUPPORT_EMAIL: "support@x05-anime.example",
+    "https://github.com/younes4100/x05-anime/releases/download/v1.0/X05-ANIME-universal-release.apk",
+  GITHUB_URL: "https://github.com/younes4100/x05-anime",
+  TELEGRAM_URL: "",
+  DISCORD_URL: "",
+  SUPPORT_EMAIL: "innerhnghto@gmail.com",
 });

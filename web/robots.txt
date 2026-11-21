@@ -4,4 +4,4 @@ Disallow: /admin/
 Disallow: /web_reset/
 Disallow: /reset/
 
-Sitemap: https://x05-anime.example/sitemap.xml
+Sitemap: https://x05-anime.pages.dev/sitemap.xml
