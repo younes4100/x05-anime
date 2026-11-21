@@ -1,0 +1,32 @@
+server {
+    listen 443 ssl http2;
+    server_name x05-anime.example;
+    root /var/www/x05-web;
+    index index.html;
+
+    ssl_certificate     /etc/letsencrypt/live/x05-anime.example/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/x05-anime.example/privkey.pem;
+
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "DENY" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()" always;
+    add_header Cross-Origin-Opener-Policy "same-origin" always;
+    add_header Cross-Origin-Resource-Policy "same-origin" always;
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests" always;
+
+    location /admin/ {
+        add_header X-Robots-Tag "noindex,nofollow,noarchive" always;
+        add_header Cache-Control "no-store" always;
+        try_files $uri $uri/ /admin/index.html;
+    }
+
+    location /reset/ {
+        add_header X-Robots-Tag "noindex,nofollow,noarchive" always;
+        try_files $uri $uri/ /reset/index.html;
+    }
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}

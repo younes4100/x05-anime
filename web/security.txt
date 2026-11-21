@@ -1,0 +1,4 @@
+Contact: mailto:support@x05-anime.example
+Expires: 2027-12-31T00:00:00.000Z
+Preferred-Languages: ar, en
+Canonical: https://x05-anime.example/security.txt

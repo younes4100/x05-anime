@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <title>Admin — X05 ANIME</title><link rel="icon" href="../favicon.png" /><link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <nav class="nav"><div class="container nav-inner">
+    <a href="../index.html" class="brand"><span class="brand-mark">X05</span> <span>ANIME</span></a>
+    <div class="nav-links"><a href="../index.html">Home</a><a href="../download.html">Download</a><a href="../support.html">Support</a></div>
+    <div class="nav-actions"><button class="lang-btn" type="button">عربي</button><span id="adminEmail" style="font-size:12px;color:var(--muted)"></span><button id="logoutBtn" class="btn btn-ghost btn-small hidden">Logout</button></div>
+  </div></nav>
+
+  <div id="loginView" class="auth-wrap">
+    <div class="auth-card">
+      <div class="brand" style="text-align:center">X05 <span>ANIME</span></div>
+      <p class="sub">لوحة الأدمن / Admin panel</p>
+      <label for="email">Email</label><input id="email" type="email" autocomplete="username" />
+      <label for="password">Password</label><input id="password" type="password" autocomplete="current-password" />
+      <button id="loginBtn" class="btn btn-primary" style="width:100%;margin-top:22px">Sign in</button>
+      <div id="loginMsg" class="msg"></div>
+      <p class="notice warn" style="font-size:12px">الصلاحية تُمنح من جدول <code>admin_emails</code> في Supabase، وليس من مفتاح anon. / Access is granted via the <code>admin_emails</code> table, never by the anon key.</p>
+    </div>
+  </div>
+
+  <div id="adminView" class="admin-shell hidden">
+    <aside class="sidebar">
+      <h4>Notifications</h4>
+      <button class="tab-btn active" data-tab="overview">📊 Overview</button>
+      <button class="tab-btn" data-tab="announcements">📢 Announcements</button>
+      <button class="tab-btn" data-tab="releases">📦 Releases</button>
+      <button class="tab-btn" data-tab="reports">🚩 Reports</button>
+      <button class="tab-btn" data-tab="users">👥 Users</button>
+      <button class="tab-btn" data-tab="admins">🔐 Admins</button>
+    </aside>
+    <main class="admin-main">
+      <div class="admin-head"><div><h2 id="pageTitle">Overview</h2><p id="pageSub" style="color:var(--muted);margin:0">Live data from Supabase.</p></div><span id="busy" class="spinner hidden"></span></div>
+      <div id="globalMsg" class="msg"></div>
+
+      <section class="tab-panel active" id="tab-overview">
+        <div class="grid grid-4" id="statCards"></div>
+        <div class="card" style="margin-top:20px"><h3>ملاحظات / Notes</h3><p>استخدم التبويبات لإدارة الإعلانات والإصدارات والبلاغات والمشرفين. أي تغيير يُسجّل في <code>admin_audit</code> إذا كان الـ trigger مُفعّلاً.</p></div>
+      </section>
+
+      <section class="tab-panel" id="tab-announcements">
+        <div class="card">
+          <h3>إضافة إعلان / New announcement</h3>
+          <div class="form-grid">
+            <div><label>العنوان عربي</label><input id="anTitleAr" /></div>
+            <div><label>Title English</label><input id="anTitleEn" /></div>
+            <div class="full"><label>النص عربي</label><textarea id="anBodyAr"></textarea></div>
+            <div class="full"><label>Body English</label><textarea id="anBodyEn"></textarea></div>
+          </div>
+          <p><button id="anSave" class="btn btn-primary">Publish</button></p>
+        </div>
+        <div class="table-wrap" style="margin-top:18px"><table><thead><tr><th>Title</th><th>Body</th><th>Status</th><th></th></tr></thead><tbody id="anList"></tbody></table></div>
+      </section>
+
+      <section class="tab-panel" id="tab-releases">
+        <div class="card">
+          <h3>إصدار جديد / New release</h3>
+          <div class="form-grid">
+            <div><label>Version</label><input id="relVersion" placeholder="2.3.6" /></div>
+            <div><label>APK URL</label><input id="relUrl" /></div>
+            <div><label>ملاحظات عربي</label><textarea id="relNotesAr"></textarea></div>
+            <div><label>Notes English</label><textarea id="relNotesEn"></textarea></div>
+          </div>
+          <p><button id="relSave" class="btn btn-primary">Publish release</button></p>
+        </div>
+        <div class="table-wrap" style="margin-top:18px"><table><thead><tr><th>Version</th><th>Notes</th><th>Status</th><th></th></tr></thead><tbody id="relList"></tbody></table></div>
+      </section>
+
+      <section class="tab-panel" id="tab-reports">
+        <div class="table-wrap"><table><thead><tr><th>Title</th><th>Category</th><th>Details</th><th>Status</th><th></th></tr></thead><tbody id="reportList"></tbody></table></div>
+      </section>
+
+      <section class="tab-panel" id="tab-users">
+        <div class="notice">يعرض هذا الجدول بيانات <code>auth.users</code> عبر دالة آمنة <code>admin_list_users()</code>. / Shows auth users through a secure RPC.</div>
+        <div class="table-wrap"><table><thead><tr><th>Email</th><th>Created</th><th>Last sign in</th><th>ID</th></tr></thead><tbody id="userList"></tbody></table></div>
+      </section>
+
+      <section class="tab-panel" id="tab-admins">
+        <div class="card"><h3>إضافة مشرف / Add admin</h3><label>Email</label><input id="adminEmailInput" type="email" /><p><button id="adminAdd" class="btn btn-primary">Add</button></p></div>
+        <div class="table-wrap" style="margin-top:18px"><table><thead><tr><th>Email</th><th></th></tr></thead><tbody id="adminList"></tbody></table></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../vendor/supabase.min.js"></script>
+  <script src="../config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

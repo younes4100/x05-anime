@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>X05 ANIME — Anime, Manga, Novels & Live TV</title>
+  <meta name="description" content="X05 ANIME — an Arabic-first open-source app for anime, manga, novels and worldwide live TV on Android and TV." />
+  <link rel="icon" href="favicon.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand"><span class="brand-mark">X05</span> <span>ANIME</span></a>
+      <div class="nav-links">
+        <a href="index.html" data-i18n="navHome">Home</a>
+        <a href="index.html#features" data-i18n="navFeatures">Features</a>
+        <a href="download.html" data-i18n="navDownload">Download APK</a>
+        <a href="guide.html" data-i18n="navGuide">Guide</a>
+        <a href="support.html" data-i18n="navSupport">Support</a>
+      </div>
+      <div class="nav-actions">
+        <button class="lang-btn" type="button">عربي</button>
+        <a href="admin/index.html" class="btn btn-ghost btn-small" data-i18n="navAdmin">Admin</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="container hero">
+    <div>
+      <div class="eyebrow" data-i18n="heroEyebrow">Anime • Manga • Novels • Live TV</div>
+      <h1><span data-i18n="heroTitleA">Your whole world.</span><br /><span class="grad" data-i18n="heroTitleB">One app.</span></h1>
+      <p class="lead" data-i18n="heroLead">X05 ANIME brings anime, manga, novels and live channels together in one clean, fast experience.</p>
+      <div class="hero-cta">
+        <a id="hero-download" href="download.html" class="btn btn-primary" data-i18n="download">Download APK</a>
+        <a href="#features" class="btn btn-ghost" data-i18n="features">Explore features</a>
+      </div>
+      <div class="badges">
+        <span class="badge" data-i18n="badge1">Android 7+</span>
+        <span class="badge" data-i18n="badge2">ARM / ARM64 / x86_64</span>
+        <span class="badge" data-i18n="badge3">Arabic UI</span>
+        <span class="badge" data-i18n="badge4">Multiple sources</span>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="phone">
+        <div class="phone-inner">
+          <div class="phone-logo">X05 <span>ANIME</span></div>
+          <div class="poster"></div>
+          <div class="phone-line"></div>
+          <div class="phone-line short"></div>
+          <div class="phone-row"><div class="tile"></div><div class="tile"></div><div class="tile"></div></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="container" id="screens">
+    <div class="section-head">
+      <h2 data-i18n="screensTitle">App screenshots</h2>
+      <p data-i18n="screensLead">Real screens from the X05 ANIME build.</p>
+    </div>
+    <div class="screens">
+      <figure class="screen"><img src="assets/screens/home.png" alt="X05 ANIME home screen" loading="lazy" /><figcaption data-i18n="screenHome">Home</figcaption></figure>
+      <figure class="screen"><img src="assets/screens/dark.png" alt="X05 ANIME dark theme" loading="lazy" /><figcaption data-i18n="screenDark">Dark theme</figcaption></figure>
+      <figure class="screen"><img src="assets/screens/classic.png" alt="X05 ANIME classic theme" loading="lazy" /><figcaption data-i18n="screenClassic">Classic theme</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="features" class="container">
+    <div class="section-head">
+      <h2 data-i18n="featuresTitle">Built to be your only app</h2>
+      <p data-i18n="featuresLead">Library, tracking, search, watching, reading and live TV — without the clutter.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="card"><div class="icon-box">▶</div><h3 data-i18n="f1">Anime, manga &amp; novels</h3><p data-i18n="f1d">Search, track, read and watch from multiple sources in one place.</p></div>
+      <div class="card"><div class="icon-box">◉</div><h3 data-i18n="f2">Live TV channels</h3><p data-i18n="f2d">A worldwide channel directory with search and categories.</p></div>
+      <div class="card"><div class="icon-box">⇄</div><h3 data-i18n="f3">Device sync</h3><p data-i18n="f3d">Pair your phone with your TV and sync favorites and history.</p></div>
+      <div class="card"><div class="icon-box">ع</div><h3 data-i18n="f4">Arabic-first UI</h3><p data-i18n="f4d">Clear Arabic text with 12 locales worldwide.</p></div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="section-head">
+      <h2 data-i18n="statsTitle">Freedom, privacy, control</h2>
+      <p data-i18n="statsLead">An open-source app that respects your privacy and puts you in control.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="card"><div class="stat">GPLv3</div><div class="stat-label" data-i18n="s1">Open source</div><p data-i18n="s1d">Upstream attribution preserved.</p></div>
+      <div class="card"><div class="stat">0</div><div class="stat-label" data-i18n="s2">No intrusive ads</div><p data-i18n="s2d">A clean experience without ad tracking.</p></div>
+      <div class="card"><div class="stat">∞</div><div class="stat-label" data-i18n="s3">Regular updates</div><p data-i18n="s3d">New builds and improvements.</p></div>
+      <div class="card"><div class="stat">12</div><div class="stat-label" data-i18n="s4">Community support</div><p data-i18n="s4d">Arabic community for help.</p></div>
+    </div>
+  </section>
+
+  <section class="container" id="release-section">
+    <div class="banner">
+      <div>
+        <h2 data-i18n="releaseTitle">Latest release</h2>
+        <p data-i18n="releaseLead">Download the universal build for most Android devices.</p>
+        <div class="notice hidden" id="announcements"></div>
+      </div>
+      <div>
+        <div class="badge" data-i18n="latest">Latest</div>
+        <h3 id="release-version">X05 ANIME</h3>
+        <p id="release-notes" class="lead" style="font-size:14px" data-i18n="noRelease">Release notes appear here.</p>
+        <a id="release-download" href="download.html" class="btn btn-primary" data-i18n="downloadNow">Direct download</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="banner">
+      <div><h2 data-i18n="ctaTitle">Ready to try?</h2><p data-i18n="ctaLead">Download now or read the guide.</p></div>
+      <a href="download.html" class="btn btn-primary" data-i18n="download">Download APK</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year">2026</span> X05 ANIME. <span data-i18n="footerRights">All rights reserved.</span></div>
+      <div class="footer-links">
+        <a href="privacy.html" data-i18n="privacy">Privacy</a>
+        <a href="terms.html" data-i18n="terms">Terms</a>
+        <a id="link-github" href="#" data-i18n="github">GitHub</a>
+        <a href="support.html" data-i18n="navSupport">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="vendor/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>
