@@ -1,0 +1,21 @@
+/// Portrait TMDB artwork suits a tall phone hero; keep other catalogues' art.
+String? mobileHeroArt(String? cover, String? banner, {String? sourceId}) {
+  if (sourceId == 'stremio') {
+    if (banner?.trim().isNotEmpty == true) return banner;
+    return cover?.trim().isNotEmpty == true ? cover : null;
+  }
+  if (cover != null && cover.startsWith('https://image.tmdb.org/t/p/')) {
+    return cover.replaceFirst(RegExp(r'/t/p/[^/]+/'), '/t/p/original/');
+  }
+  return banner ?? cover;
+}
+
+/// Detail backgrounds sample the poster first, falling back to the backdrop.
+String? adaptiveArtUrl(String? poster, String? backdrop) {
+  if (poster != null && poster.trim().isNotEmpty) return poster;
+  return backdrop != null && backdrop.trim().isNotEmpty ? backdrop : null;
+}
+
+/// Wide Stremio backdrops need their detail preserved before a tall hero crops them.
+int mobileHeroDecodeWidth(String sourceId, int screenWidth) =>
+    sourceId == 'stremio' && screenWidth < 1920 ? 1920 : screenWidth;

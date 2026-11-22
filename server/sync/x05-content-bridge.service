@@ -1,0 +1,23 @@
+[Unit]
+Description=Temporary X05 content bridge during VPS sync rollout
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=x05_bridge
+Group=x05_bridge
+WorkingDirectory=/opt/x05-content
+Environment=SUPABASE_DSN_FILE=/etc/x05/supabase-db-url
+Environment=HOME=/var/empty
+Environment="VPS_DSN=dbname=x05_sync_stage user=x05_bridge"
+ExecStart=/usr/bin/python3 /opt/x05-content/content_bridge.py
+Restart=on-failure
+RestartSec=15
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

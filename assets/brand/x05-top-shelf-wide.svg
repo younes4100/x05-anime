@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2320" height="720" viewBox="0 0 2320 720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0C1428"/>
+      <stop offset=".5" stop-color="#060A15"/>
+      <stop offset="1" stop-color="#02040A"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".46" r=".52">
+      <stop offset="0" stop-color="#1677FF" stop-opacity=".34"/>
+      <stop offset=".55" stop-color="#1677FF" stop-opacity=".09"/>
+      <stop offset="1" stop-color="#1677FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="edge" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#1677FF" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#1677FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="barA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#AFCDFF"/>
+    </linearGradient>
+    <linearGradient id="barB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#63B0FF"/>
+      <stop offset="1" stop-color="#083BB4"/>
+    </linearGradient>
+    <linearGradient id="wgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset=".55" stop-color="#DCEBFF"/>
+      <stop offset="1" stop-color="#7DB6FF"/>
+    </linearGradient>
+    <linearGradient id="wline" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1677FF" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#1677FF"/>
+      <stop offset="1" stop-color="#1677FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1677FF" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#1677FF" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#1677FF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="2320" height="720" fill="url(#bg)"/>
+  <rect width="2320" height="720" fill="url(#glow)"/>
+  <g opacity=".15" stroke="#7CBBFF" stroke-width="1.6">
+    <path d="M-80 860 L2100 -40"/>
+    <path d="M-80 960 L2100 60"/>
+  </g>
+  <circle cx="1630" cy="360" r="330" fill="url(#edge)"/>
+  <g transform="rotate(-28 1630 360)">
+    <circle cx="1630" cy="360" r="300" fill="none" stroke="#4C9CFF"
+            stroke-opacity=".20" stroke-width="2"
+            stroke-dasharray="640 120 70 380"/>
+    <circle cx="1630" cy="360" r="250" fill="none" stroke="#FFFFFF"
+            stroke-opacity=".05" stroke-width="1.2"/>
+  </g>
+
+  <!-- Lockup, optically centred as a whole. -->
+  <g transform="translate(795 0)">
+    <g transform="translate(130 360) scale(0.255) translate(-512 -512)">
+      
+  <path d="M232 186 L404 186 L792 838 L620 838 Z" fill="url(#barA)"/>
+  <path d="M620 186 L792 186 L404 838 L232 838 Z" fill="url(#barB)"/>
+      <circle cx="512" cy="512" r="176" fill="#05080F"/>
+      <circle cx="512" cy="512" r="176" fill="none" stroke="#8FC4FF" stroke-opacity=".42" stroke-width="3"/>
+      <path d="M466 430 L466 594 L630 512 Z" fill="#EAF4FF"/>
+    </g>
+    <rect x="292" y="242" width="2" height="236" rx="1" fill="url(#wline)"/>
+    <text x="330" y="410" font-family="'Arial Black','Segoe UI',sans-serif"
+          font-weight="900" font-style="italic" font-size="152" letter-spacing="-3"
+          fill="url(#wgrad)">X05</text>
+    <text x="336" y="474" font-family="'Segoe UI',Arial,sans-serif" font-weight="700"
+          font-size="45" letter-spacing="25" fill="#A9C7EE">ANIME</text>
+  </g>
+
+  <rect x="990" y="560" width="340" height="1.4" fill="url(#rule)"/>
+  <text x="1160" y="616" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif"
+        font-weight="600" font-size="24" letter-spacing="13"
+        fill="#7F9CC8">STREAM. DISCOVER. REPEAT.</text>
+</svg>

@@ -1,0 +1,19 @@
+[Unit]
+Description=Back up the X05 VPS database to private R2
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=postgres
+Group=postgres
+Environment=HOME=/var/empty
+Environment=R2_BACKUP_URL=https://x05-vps-backup.log-intake.workers.dev/v1/backup
+Environment=R2_BACKUP_TOKEN_FILE=/etc/x05-backup/r2-upload-token
+ExecStart=/usr/bin/python3 /opt/x05-content/backup_to_r2.py
+TimeoutStartSec=2h
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/var/backups/x05-sync
+ProtectHome=true
+PrivateTmp=true

@@ -1,0 +1,26 @@
+[Unit]
+Description=X05 KLIPY API proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=x05-klipy
+Group=x05-klipy
+SupplementaryGroups=sync_authenticator
+WorkingDirectory=/opt/x05-klipy
+Environment=SUPABASE_ISSUER=https://eogwzrlfoercfwcfwlmv.supabase.co/auth/v1
+Environment=VPS_AUTH_ISSUER=https://auth.x05-anime.example/auth/v1
+Environment=SUPABASE_JWKS_PATH=/etc/x05-sync/jwks.json
+LoadCredential=klipy_api_key:/etc/x05-klipy/api_key
+ExecStart=/opt/x05-klipy/venv/bin/python /opt/x05-klipy/klipy_proxy.py
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

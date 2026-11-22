@@ -1,59 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8" /><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Download — X05 ANIME</title><link rel="icon" href="favicon.png" /><link rel="stylesheet" href="css/style.css" /></head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://graphql.anilist.co; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download — X05 ANIME</title>
+  <meta name="description" content="Download the universal X05 ANIME APK for Android 7+, ARM, ARM64 and x86_64." />
+  <link rel="icon" href="favicon.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
 <body>
   <nav class="nav"><div class="container nav-inner">
     <a href="index.html" class="brand"><span class="brand-mark">X05</span> <span>ANIME</span></a>
-    <div class="nav-links"><a href="index.html" data-i18n="navHome">Home</a><a href="index.html#features" data-i18n="navFeatures">Features</a><a href="download.html" class="active" data-i18n="navDownload">Download APK</a><a href="guide.html" data-i18n="navGuide">Guide</a><a href="support.html" data-i18n="navSupport">Support</a></div>
-    <div class="nav-actions"><button class="lang-btn" type="button">عربي</button><a href="admin/index.html" class="btn btn-ghost btn-small" data-i18n="navAdmin">Admin</a></div>
+    <div class="nav-links">
+      <a href="index.html" data-i18n="navHome">Home</a>
+      <a href="index.html#features" data-i18n="navFeatures">Features</a>
+      <a href="download.html" class="active" data-i18n="navDownload">Download APK</a>
+      <a href="index.html#versions" data-i18n="navVersions">Versions</a>
+      <a href="guide.html" data-i18n="navGuide">Guide</a>
+      <a href="support.html" data-i18n="navSupport">Support</a>
+    </div>
+    <div class="nav-actions"><button class="lang-btn" type="button">عربي</button></div>
   </div></nav>
 
-  <main class="container" style="padding:60px 0">
-    <div class="section-head"><h2>تحميل التطبيق / Download</h2><p>نسخة شاملة تعمل على أغلب أجهزة أندرويد والتلفازات / Universal build for most Android and TV devices.</p></div>
-    <div class="grid grid-3">
-      <div class="card">
-        <div class="icon-box">↓</div>
-        <h3>APK شامل / Universal APK</h3>
-        <p>ARM · ARM64 · x86_64 — أندرويد 7.0 فأعلى.</p>
-        <p style="margin-top:12px"><a id="link-apk" class="btn btn-primary" href="#">تحميل / Download</a></p>
+  <header class="container download-hero">
+    <div class="download-panel">
+      <div class="eyebrow" data-i18n="downloadEyebrow">Universal build · one file</div>
+      <h1 data-i18n="downloadTitle">Download X05 ANIME</h1>
+      <p class="lead" data-i18n="downloadLead">A light, transparent blue-glass app for anime, manga, novels and live TV. One APK for phones, tablets and TV boxes.</p>
+      <div class="hero-cta">
+        <a id="link-apk" class="btn btn-primary" href="#" data-i18n="downloadNow">Download APK</a>
+        <a id="link-releases-download" href="#" class="btn btn-ghost" data-i18n="viewAllReleases">All releases</a>
       </div>
-      <div class="card">
-        <div class="icon-box">✓</div>
-        <h3>قبل التثبيت / Before installing</h3>
-        <p>اسمح بتثبيت التطبيقات من مصادر غير معروفة للمتصفح أو مدير الملفات فقط، ثم أعد الإغلاق بعد التثبيت.</p>
-        <p style="margin-top:8px;color:var(--muted)">Allow “install from unknown sources” for your browser/file manager only, then turn it off.</p>
+      <div class="meta-row">
+        <span class="meta-pill" data-i18n="badge1">Android 7+</span>
+        <span class="meta-pill" data-i18n="badge2">ARM / ARM64 / x86_64</span>
+        <span class="meta-pill" data-i18n="metaSize">≈ 143 MB</span>
+        <span class="meta-pill" id="download-version" data-i18n="latest">Latest</span>
       </div>
-      <div class="card">
-        <div class="icon-box">#</div>
-        <h3>التحقق / Verify</h3>
-        <p>SHA-256</p>
-        <p id="apk-sha" style="word-break:break-all;color:var(--muted);font-size:12px">90EBBE8078DAEC15AEC6FA83596A10C61250FB289C3774207B95E92022A92F77</p>
-      </div>
+      <div class="notice" data-i18n="downloadNotice">The APK is published on GitHub Releases. No account, no payment, no installer.</div>
     </div>
+    <div class="card">
+      <div class="icon-box">#</div>
+      <h3 data-i18n="verifyTitle">Verify the file</h3>
+      <p data-i18n="verifyLead">Compare the SHA-256 fingerprint after downloading. It should match the official build below.</p>
+      <div id="apk-sha" class="sha-box">061BBC12E9FCC389925D548BAE625C6FB38287EDA8F3F999190FF6FF1F56FD62</div>
+      <h3 style="margin-top:24px" data-i18n="beforeTitle">Before installing</h3>
+      <ul class="check-list">
+        <li data-i18n="check1">Allow “install from unknown sources” for your browser or file manager only.</li>
+        <li data-i18n="check2">Turn that permission off again after the install finishes.</li>
+        <li data-i18n="check3">On Android TV, copy the APK to USB and open it from the TV file manager.</li>
+      </ul>
+    </div>
+  </header>
 
-    <section class="section-head" style="margin-top:34px">
-      <h2 data-i18n="screensTitle">App screenshots</h2>
-      <p data-i18n="screensLead">Real screens from the X05 ANIME build.</p>
+  <main class="container">
+    <section id="versionsDownload" style="padding-top:36px">
+      <div class="section-head">
+        <h2 data-i18n="versionsTitle">All versions</h2>
+        <p data-i18n="versionsLead">Every published build, newest first. Older versions stay available while they are useful.</p>
+      </div>
+      <div id="version-list"></div>
+      <div class="notice" data-i18n="githubReleasesNote">Release files are hosted on GitHub. X05 ANIME hosts no content and no APK on this site.</div>
     </section>
-    <div class="screens">
-      <figure class="screen"><img src="assets/screens/home.png" alt="X05 ANIME home screen" loading="lazy" /><figcaption data-i18n="screenHome">Home</figcaption></figure>
-      <figure class="screen"><img src="assets/screens/dark.png" alt="X05 ANIME dark theme" loading="lazy" /><figcaption data-i18n="screenDark">Dark theme</figcaption></figure>
-      <figure class="screen"><img src="assets/screens/classic.png" alt="X05 ANIME classic theme" loading="lazy" /><figcaption data-i18n="screenClassic">Classic theme</figcaption></figure>
-    </div>
 
-    <div class="notice warn" style="margin-top:24px">
+    <section class="container" style="padding-left:0;padding-right:0" id="screens">
+      <div class="section-head">
+        <h2 data-i18n="screensTitle">App screenshots</h2>
+        <p data-i18n="screensLead">Real screens from the X05 ANIME build.</p>
+      </div>
+      <div class="screens">
+        <figure class="screen"><img src="assets/screens/home.png" alt="X05 ANIME home screen" loading="lazy" /><figcaption data-i18n="screenHome">Home</figcaption></figure>
+        <figure class="screen"><img src="assets/screens/dark.png" alt="X05 ANIME dark theme" loading="lazy" /><figcaption data-i18n="screenDark">Dark theme</figcaption></figure>
+        <figure class="screen"><img src="assets/screens/classic.png" alt="X05 ANIME classic theme" loading="lazy" /><figcaption data-i18n="screenClassic">Classic theme</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="faq" style="padding-left:0;padding-right:0">
+      <div class="section-head">
+        <h2 data-i18n="faqTitle">Frequently asked</h2>
+        <p data-i18n="faqLead">Short answers before you install.</p>
+      </div>
+      <details><summary data-i18n="faq4q">Does it work on Android TV?</summary><p data-i18n="faq4a">Yes. Use the TV file manager to open the APK from USB, or install it inside an Android emulator such as MSI App Player. Pair your phone from the TV section for remote control.</p></details>
+      <details><summary data-i18n="faq5q">Which architecture should I choose?</summary><p data-i18n="faq5a">This is the universal build: ARM, ARM64 and x86_64 are all inside the same APK. Android 7.0 or newer is required.</p></details>
+      <details><summary data-i18n="faq6q">Where do channels and streams come from?</summary><p data-i18n="faq6a">Live TV reads public playlists from iptv-org. Video sources are external and change over time; X05 hosts no streams.</p></details>
+    </section>
+
+    <div class="notice warn" style="margin-top:10px">
       X05 ANIME لا يستضيف أي محتوى. المصادر الخارجية قد تتغير؛ العناوين المعروضة في السينما أو لم تُعرض بعد لن تعمل حتى يتوفر مصدر قانوني.
       X05 ANIME hosts no content. External sources change; titles still in cinemas or not yet aired cannot be played until a legal stream exists.
-    </div>
-
-    <div class="card" style="margin-top:24px">
-      <h3>تلفاز / TV &amp; MSI App Player</h3>
-      <p>انسخ الـ APK إلى USB وافتحه من مدير ملفات التلفاز، أو ثبّته داخل MSI App Player ثم افتح التطبيق وامنح الأذونات المطلوبة. للتلفاز استخدم QR الاقتران من قسم TV.</p>
-      <p style="color:var(--muted)">Copy the APK to USB and open it from the TV file manager, or install it inside MSI App Player. On TV, use the pairing QR from the TV section.</p>
     </div>
   </main>
 
   <footer><div class="container footer-inner"><div>© <span id="year">2026</span> X05 ANIME.</div><div class="footer-links"><a href="privacy.html" data-i18n="privacy">Privacy</a><a href="terms.html" data-i18n="terms">Terms</a><a href="support.html" data-i18n="navSupport">Support</a></div></div></footer>
-  <script src="config.js"></script><script src="js/site.js"></script>
+  <script src="vendor/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="js/site.js"></script>
 </body>
 </html>

@@ -143,11 +143,18 @@
       .then(function (res) {
         assert(res);
         $("relList").innerHTML = (res.data || []).map(function (r) {
+          var date = r.published_at
+            ? new Date(r.published_at).toLocaleDateString("en-GB")
+            : "—";
+          var apk = r.apk_url
+            ? "<a href='" + esc(r.apk_url) + "' target='_blank' rel='noopener'>APK</a>"
+            : "—";
           return "<tr><td>" + esc(r.version) + "</td><td>" + esc((r.notes_en || r.notes_ar || "").slice(0, 90)) + "</td>" +
+            "<td>" + apk + "</td><td>" + esc(date) + "</td>" +
             "<td><span class='pill " + (r.published ? "ok" : "off") + "'>" + (r.published ? "Published" : "Draft") + "</span></td>" +
             "<td><button class='btn btn-ghost btn-small' data-toggle-rel='" + esc(r.id) + "' data-val='" + (r.published ? "0" : "1") + "'>" + (r.published ? "Unpublish" : "Publish") + "</button> " +
             "<button class='btn btn-ghost btn-small' data-del-rel='" + esc(r.id) + "'>Delete</button></td></tr>";
-        }).join("") || "<tr><td colspan='4' style='color:var(--muted)'>No releases.</td></tr>";
+        }).join("") || "<tr><td colspan='6' style='color:var(--muted)'>No releases.</td></tr>";
         bind("toggle-rel", function (id, node) { return sb.from("app_releases").update({ published: node.getAttribute("data-val") === "1" }).eq("id", id).then(assert).then(function () { loadReleases(); }); });
         bind("del-rel", function (id) { return sb.from("app_releases").delete().eq("id", id).then(assert).then(function () { loadReleases(); }); });
       }).catch(function (e) { say(globalMsg, (e && e.message) || "Failed to load releases.", false); });

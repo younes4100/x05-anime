@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../web/favicon.png" />
+  <title>X05 ANIME — Reset Password</title>
+  <style>
+    :root { --bg:#0b0b0f; --surface:#16161d; --accent:#ff3b5c; --text:#f2f2f5; --muted:#9a9aa5; --field:#0e0e13; --border:#2a2a33; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--bg); color:var(--text); font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; padding:24px; }
+    .card { width:100%; max-width:400px; background:var(--surface); border-radius:20px; padding:34px 28px; box-shadow:0 20px 60px rgba(0,0,0,.5); }
+    .brand { font-size:30px; font-weight:800; letter-spacing:3px; text-align:center; }
+    .brand span { color:var(--accent); }
+    .sub { text-align:center; color:var(--muted); font-size:14px; margin:6px 0 26px; }
+    label { display:block; font-size:13px; color:var(--muted); margin:14px 0 6px; }
+    input { width:100%; padding:13px 14px; border-radius:12px; border:1px solid var(--border); background:var(--field); color:var(--text); font-size:15px; outline:none; }
+    input:focus { border-color:var(--accent); }
+    button { width:100%; margin-top:24px; padding:14px; border:none; border-radius:12px; background:var(--accent); color:#fff; font-size:16px; font-weight:700; cursor:pointer; }
+    button:disabled { opacity:.5; cursor:default; }
+    .msg { margin-top:16px; font-size:14px; text-align:center; min-height:20px; line-height:1.4; }
+    .msg.err { color:#ff6b6b; } .msg.ok { color:#4ec07a; }
+    .hidden { display:none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="brand">X05 <span>ANIME</span></div>
+    <div class="sub" id="subtitle">Set a new password</div>
+    <div id="requestBox">
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="email" placeholder="you@example.com" />
+      <button id="sendBtn" type="button">Send reset link</button>
+    </div>
+    <div id="updateBox" class="hidden">
+      <label for="pw">New password</label>
+      <input id="pw" type="password" autocomplete="new-password" placeholder="At least 8 characters" minlength="8" />
+      <label for="pw2">Confirm password</label>
+      <input id="pw2" type="password" autocomplete="new-password" minlength="8" />
+      <button id="updateBtn" type="button">Reset password</button>
+    </div>
+    <div class="msg" id="msg"></div>
+  </div>
+
+  <script src="../web/vendor/supabase.min.js"></script>
+  <script src="../web/config.js"></script>
+  <script src="../web/js/reset-page.js"></script>
+</body>
+</html>

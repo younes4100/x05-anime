@@ -1,0 +1,11 @@
+[Unit]
+Description=Refresh Supabase public signing keys for X05 staging sync
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+RandomizedDelaySec=1min
+Unit=x05-jwks-refresh.service
+
+[Install]
+WantedBy=timers.target

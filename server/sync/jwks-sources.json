@@ -1,0 +1,10 @@
+[
+  {
+    "issuer": "https://eogwzrlfoercfwcfwlmv.supabase.co/auth/v1",
+    "url": "https://eogwzrlfoercfwcfwlmv.supabase.co/auth/v1/.well-known/jwks.json"
+  },
+  {
+    "issuer": "https://auth.x05-anime.example/auth/v1",
+    "url": "https://auth.x05-anime.example/auth/v1/.well-known/jwks.json"
+  }
+]

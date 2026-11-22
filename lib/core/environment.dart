@@ -24,7 +24,7 @@ class Environment {
   /// Password-reset landing. Supabase now drives reset (via the auth `site_url`,
   /// which points at this same page); kept for reference. Not used by the
   /// Supabase AuthCubit, which calls `resetPasswordForEmail`.
-  static const String passwordResetUrl = 'https://x05-anime.pages.dev/';
+  static const String passwordResetUrl = 'https://x05-anime.pages.dev/reset/';
 
   /// Base of the X05 website (landing + reset + the share "open" page).
   static const String siteBaseUrl = 'https://x05-anime.pages.dev';

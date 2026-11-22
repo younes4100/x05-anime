@@ -2,120 +2,175 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://graphql.anilist.co; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>X05 ANIME — Anime, Manga, Novels & Live TV</title>
-  <meta name="description" content="X05 ANIME — an Arabic-first open-source app for anime, manga, novels and worldwide live TV on Android and TV." />
+  <title>X05 ANIME — Anime, Movies, Manga & Live TV</title>
+  <meta name="description" content="X05 ANIME — an Arabic-first open-source app for anime, anime movies, manga, novels and worldwide live TV on Android and TV." />
   <link rel="icon" href="favicon.png" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
   <nav class="nav">
     <div class="container nav-inner">
       <a href="index.html" class="brand"><span class="brand-mark">X05</span> <span>ANIME</span></a>
       <div class="nav-links">
-        <a href="index.html" data-i18n="navHome">Home</a>
-        <a href="index.html#features" data-i18n="navFeatures">Features</a>
+        <a href="index.html" class="active" data-i18n="navHome">Home</a>
+        <a href="#discover" data-i18n="navDiscover">Discover</a>
+        <a href="#features" data-i18n="navFeatures">Features</a>
         <a href="download.html" data-i18n="navDownload">Download APK</a>
+        <a href="#versions" data-i18n="navVersions">Versions</a>
         <a href="guide.html" data-i18n="navGuide">Guide</a>
         <a href="support.html" data-i18n="navSupport">Support</a>
       </div>
-      <div class="nav-actions">
-        <button class="lang-btn" type="button">عربي</button>
-        <a href="admin/index.html" class="btn btn-ghost btn-small" data-i18n="navAdmin">Admin</a>
-      </div>
+      <div class="nav-actions"><button class="lang-btn" type="button">عربي</button></div>
     </div>
   </nav>
 
-  <header class="container hero">
-    <div>
-      <div class="eyebrow" data-i18n="heroEyebrow">Anime • Manga • Novels • Live TV</div>
+  <header class="container hero hero-cinematic">
+    <div class="hero-copy">
+      <div class="eyebrow" data-i18n="heroEyebrow">Anime • Movies • Manga • Live TV</div>
       <h1><span data-i18n="heroTitleA">Your whole world.</span><br /><span class="grad" data-i18n="heroTitleB">One app.</span></h1>
-      <p class="lead" data-i18n="heroLead">X05 ANIME brings anime, manga, novels and live channels together in one clean, fast experience.</p>
+      <p class="lead" data-i18n="heroLead">Real poster art, anime films, live channels and your library — in one clean, fast blue-glass experience.</p>
       <div class="hero-cta">
         <a id="hero-download" href="download.html" class="btn btn-primary" data-i18n="download">Download APK</a>
-        <a href="#features" class="btn btn-ghost" data-i18n="features">Explore features</a>
+        <a href="#discover" class="btn btn-ghost" data-i18n="exploreNow">Explore titles</a>
       </div>
       <div class="badges">
         <span class="badge" data-i18n="badge1">Android 7+</span>
         <span class="badge" data-i18n="badge2">ARM / ARM64 / x86_64</span>
         <span class="badge" data-i18n="badge3">Arabic UI</span>
-        <span class="badge" data-i18n="badge4">Multiple sources</span>
+        <span class="badge" data-i18n="badge4">5 dock tabs</span>
       </div>
     </div>
-    <div class="hero-visual" aria-hidden="true">
-      <div class="phone">
-        <div class="phone-inner">
-          <div class="phone-logo">X05 <span>ANIME</span></div>
-          <div class="poster"></div>
-          <div class="phone-line"></div>
-          <div class="phone-line short"></div>
-          <div class="phone-row"><div class="tile"></div><div class="tile"></div><div class="tile"></div></div>
-        </div>
-      </div>
-    </div>
+    <div class="hero-stage" id="heroPosterWall" aria-hidden="true"></div>
   </header>
 
-  <section class="container" id="screens">
-    <div class="section-head">
-      <h2 data-i18n="screensTitle">App screenshots</h2>
-      <p data-i18n="screensLead">Real screens from the X05 ANIME build.</p>
-    </div>
-    <div class="screens">
-      <figure class="screen"><img src="assets/screens/home.png" alt="X05 ANIME home screen" loading="lazy" /><figcaption data-i18n="screenHome">Home</figcaption></figure>
-      <figure class="screen"><img src="assets/screens/dark.png" alt="X05 ANIME dark theme" loading="lazy" /><figcaption data-i18n="screenDark">Dark theme</figcaption></figure>
-      <figure class="screen"><img src="assets/screens/classic.png" alt="X05 ANIME classic theme" loading="lazy" /><figcaption data-i18n="screenClassic">Classic theme</figcaption></figure>
-    </div>
-  </section>
+  <div class="ticker" aria-hidden="true"><div class="ticker-track" id="discoverTicker"></div></div>
 
-  <section id="features" class="container">
-    <div class="section-head">
-      <h2 data-i18n="featuresTitle">Built to be your only app</h2>
-      <p data-i18n="featuresLead">Library, tracking, search, watching, reading and live TV — without the clutter.</p>
-    </div>
-    <div class="grid grid-4">
-      <div class="card"><div class="icon-box">▶</div><h3 data-i18n="f1">Anime, manga &amp; novels</h3><p data-i18n="f1d">Search, track, read and watch from multiple sources in one place.</p></div>
-      <div class="card"><div class="icon-box">◉</div><h3 data-i18n="f2">Live TV channels</h3><p data-i18n="f2d">A worldwide channel directory with search and categories.</p></div>
-      <div class="card"><div class="icon-box">⇄</div><h3 data-i18n="f3">Device sync</h3><p data-i18n="f3d">Pair your phone with your TV and sync favorites and history.</p></div>
-      <div class="card"><div class="icon-box">ع</div><h3 data-i18n="f4">Arabic-first UI</h3><p data-i18n="f4d">Clear Arabic text with 12 locales worldwide.</p></div>
-    </div>
-  </section>
-
-  <section class="container">
-    <div class="section-head">
-      <h2 data-i18n="statsTitle">Freedom, privacy, control</h2>
-      <p data-i18n="statsLead">An open-source app that respects your privacy and puts you in control.</p>
-    </div>
-    <div class="grid grid-4">
-      <div class="card"><div class="stat">GPLv3</div><div class="stat-label" data-i18n="s1">Open source</div><p data-i18n="s1d">Upstream attribution preserved.</p></div>
-      <div class="card"><div class="stat">0</div><div class="stat-label" data-i18n="s2">No intrusive ads</div><p data-i18n="s2d">A clean experience without ad tracking.</p></div>
-      <div class="card"><div class="stat">∞</div><div class="stat-label" data-i18n="s3">Regular updates</div><p data-i18n="s3d">New builds and improvements.</p></div>
-      <div class="card"><div class="stat">12</div><div class="stat-label" data-i18n="s4">Community support</div><p data-i18n="s4d">Arabic community for help.</p></div>
-    </div>
-  </section>
-
-  <section class="container" id="release-section">
-    <div class="banner">
-      <div>
-        <h2 data-i18n="releaseTitle">Latest release</h2>
-        <p data-i18n="releaseLead">Download the universal build for most Android devices.</p>
-        <div class="notice hidden" id="announcements"></div>
+  <main>
+    <section class="container" id="discover" style="padding-top:62px">
+      <div class="section-head reveal">
+        <div class="section-kicker" data-i18n="kickerDiscover">Live catalogue</div>
+        <h2 data-i18n="discoverTitle">See what everyone is watching</h2>
+        <p data-i18n="discoverLead">Posters and titles update live from AniList. Pick a trending series, an anime film, or jump straight into live TV.</p>
       </div>
-      <div>
-        <div class="badge" data-i18n="latest">Latest</div>
-        <h3 id="release-version">X05 ANIME</h3>
-        <p id="release-notes" class="lead" style="font-size:14px" data-i18n="noRelease">Release notes appear here.</p>
-        <a id="release-download" href="download.html" class="btn btn-primary" data-i18n="downloadNow">Direct download</a>
-      </div>
-    </div>
-  </section>
 
-  <section class="container">
-    <div class="banner">
-      <div><h2 data-i18n="ctaTitle">Ready to try?</h2><p data-i18n="ctaLead">Download now or read the guide.</p></div>
-      <a href="download.html" class="btn btn-primary" data-i18n="download">Download APK</a>
-    </div>
-  </section>
+      <div class="discover-tools reveal">
+        <div class="discover-tabs" role="tablist" aria-label="Discover filters">
+          <button class="discover-tab active" type="button" data-discover-tab="trending" data-i18n="tabTrending">Trending</button>
+          <button class="discover-tab" type="button" data-discover-tab="movies" data-i18n="tabMovies">Anime films</button>
+          <button class="discover-tab" type="button" data-discover-tab="live" data-i18n="tabLive">Live TV</button>
+        </div>
+        <input id="discoverSearch" class="discover-search" type="search" data-i18n-ph="discoverSearch" aria-label="Search titles" />
+      </div>
+
+      <div class="spotlight reveal" id="spotlight"></div>
+      <div class="poster-rail" id="discoverRail"></div>
+      <p class="discover-status" id="discoverStatus"></p>
+      <div class="notice" data-i18n="discoverCredit">Cover art and titles come from AniList. X05 hosts no stream and no copyrighted file.</div>
+    </section>
+
+    <section class="container" id="features" style="padding-top:40px">
+      <div class="section-head reveal">
+        <div class="section-kicker" data-i18n="kickerFeatures">Why X05</div>
+        <h2 data-i18n="featuresTitle">Built to be your only app</h2>
+        <p data-i18n="featuresLead">Library, tracking, search, watching, reading and live TV — without the clutter.</p>
+      </div>
+      <div class="grid grid-4">
+        <div class="card reveal"><div class="icon-box">▶</div><h3 data-i18n="f1">Anime, manga &amp; novels</h3><p data-i18n="f1d">Search, track, read and watch from multiple sources in one place.</p></div>
+        <div class="card reveal"><div class="icon-box">⚡</div><h3 data-i18n="f5">Auto Resolve</h3><p data-i18n="f5d">Fast source matching for films and series, with priority ordering and smart retries.</p></div>
+        <div class="card reveal"><div class="icon-box">◉</div><h3 data-i18n="f2">Live TV guide</h3><p data-i18n="f2d">A featured channel, top five, favourites, and country/category filters.</p></div>
+        <div class="card reveal"><div class="icon-box">▦</div><h3 data-i18n="f6">Five dock tabs</h3><p data-i18n="f6d">Live TV is now a first-class destination instead of a buried menu item.</p></div>
+        <div class="card reveal"><div class="icon-box">⇄</div><h3 data-i18n="f3">Device sync</h3><p data-i18n="f3d">Pair your phone with your TV and sync favorites and history.</p></div>
+        <div class="card reveal"><div class="icon-box">ع</div><h3 data-i18n="f4">Arabic-first UI</h3><p data-i18n="f4d">Clear Arabic text with 12 locales worldwide.</p></div>
+        <div class="card reveal"><div class="icon-box">◇</div><h3 data-i18n="f7">Glass interface</h3><p data-i18n="f7d">Translucent blue surfaces and smooth motion on phone and TV.</p></div>
+        <div class="card reveal"><div class="icon-box">✓</div><h3 data-i18n="f8">Private by design</h3><p data-i18n="f8d">No content hosted here. Your history stays on your device.</p></div>
+      </div>
+    </section>
+
+    <section class="container" style="padding-top:30px">
+      <div class="section-head reveal">
+        <div class="section-kicker" data-i18n="kickerStats">Freedom</div>
+        <h2 data-i18n="statsTitle">Freedom, privacy, control</h2>
+        <p data-i18n="statsLead">An open-source app that respects your privacy and puts you in control.</p>
+      </div>
+      <div class="grid grid-4">
+        <div class="card reveal"><div class="stat">GPLv3</div><div class="stat-label" data-i18n="s1">Open source</div><p data-i18n="s1d">Upstream attribution preserved.</p></div>
+        <div class="card reveal"><div class="stat">0</div><div class="stat-label" data-i18n="s2">No intrusive ads</div><p data-i18n="s2d">A clean experience without ad tracking.</p></div>
+        <div class="card reveal"><div class="stat">7+</div><div class="stat-label" data-i18n="s5">Android version</div><p data-i18n="s5d">Works on Android 7 and newer devices.</p></div>
+        <div class="card reveal"><div class="stat">3</div><div class="stat-label" data-i18n="s6">CPU architectures</div><p data-i18n="s6d">ARM, ARM64 and x86_64 in one APK.</p></div>
+      </div>
+    </section>
+
+    <section class="container" id="live" style="padding-top:30px">
+      <div class="live-preview reveal">
+        <div class="live-preview-copy">
+          <div class="section-kicker" data-i18n="kickerLive">Live TV</div>
+          <h2 data-i18n="liveTitle">A real guide, not a link list</h2>
+          <p data-i18n="liveLead">Featured channel, a five-channel top row, favourites, country and category filters, and one-tap playback through the same player as everything else.</p>
+          <div class="channel-pills">
+            <span data-i18n="channel1">Worldwide</span><span data-i18n="channel2">Arabic</span>
+            <span data-i18n="channel3">News</span><span data-i18n="channel4">Sports</span>
+          </div>
+          <div class="hero-cta"><a href="download.html" class="btn btn-primary" data-i18n="livePlay">Watch in the app</a></div>
+        </div>
+        <div class="live-preview-visual"><div class="live-play">▶</div></div>
+      </div>
+    </section>
+
+    <section class="container" id="screens">
+      <div class="section-head reveal">
+        <div class="section-kicker" data-i18n="kickerScreens">Inside the app</div>
+        <h2 data-i18n="screensTitle">App screenshots</h2>
+        <p data-i18n="screensLead">Real screens from the X05 ANIME build.</p>
+      </div>
+      <div class="screens">
+        <figure class="screen reveal"><img src="assets/screens/home.png" alt="X05 ANIME home screen" loading="lazy" /><figcaption data-i18n="screenHome">Home</figcaption></figure>
+        <figure class="screen reveal"><img src="assets/screens/dark.png" alt="X05 ANIME dark theme" loading="lazy" /><figcaption data-i18n="screenDark">Dark theme</figcaption></figure>
+        <figure class="screen reveal"><img src="assets/screens/classic.png" alt="X05 ANIME classic theme" loading="lazy" /><figcaption data-i18n="screenClassic">Classic theme</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="container" id="release-section">
+      <div class="banner reveal">
+        <div>
+          <div class="section-kicker" data-i18n="kickerRelease">Latest build</div>
+          <h2 data-i18n="releaseTitle">Latest release</h2>
+          <p data-i18n="releaseLead">Download the universal build for most Android devices.</p>
+          <div class="notice hidden" id="announcements"></div>
+        </div>
+        <div>
+          <div class="badge" data-i18n="latest">Latest</div>
+          <h3 id="release-version">X05 ANIME</h3>
+          <p id="release-notes" class="lead" style="font-size:14px" data-i18n="noRelease">Release notes appear here.</p>
+          <a id="release-download" href="download.html" class="btn btn-primary" data-i18n="downloadNow">Direct download</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="versions">
+      <div class="section-head reveal">
+        <div class="section-kicker" data-i18n="kickerVersions">History</div>
+        <h2 data-i18n="versionsTitle">All versions</h2>
+        <p data-i18n="versionsLead">Every published build, newest first. Older versions stay available while they are useful.</p>
+      </div>
+      <div id="version-list-home"></div>
+      <p style="margin-top:18px"><a id="link-releases" href="#" class="btn btn-ghost btn-small" data-i18n="viewAllReleases">View all releases</a></p>
+    </section>
+
+    <section class="container faq" id="faq">
+      <div class="section-head reveal">
+        <div class="section-kicker" data-i18n="kickerFaq">Answers</div>
+        <h2 data-i18n="faqTitle">Frequently asked</h2>
+        <p data-i18n="faqLead">Short answers before you install.</p>
+      </div>
+      <details><summary data-i18n="faq1q">Where do the channels come from?</summary><p data-i18n="faq1a">The Live TV guide reads public playlists from the iptv-org project. X05 does not host any stream.</p></details>
+      <details><summary data-i18n="faq2q">Why can't I find a movie yet?</summary><p data-i18n="faq2a">External sources change. Titles still in cinemas or not yet aired cannot be played until a legal stream exists; use Auto Resolve or pick a source manually.</p></details>
+      <details><summary data-i18n="faq3q">How do I reset my password?</summary><p data-i18n="faq3a">Use “Forgot password?” in the app or sign-in page. The email link now opens the dedicated reset page on this site.</p></details>
+    </section>
+  </main>
 
   <footer>
     <div class="container footer-inner">
@@ -132,5 +187,6 @@
   <script src="vendor/supabase.min.js"></script>
   <script src="config.js"></script>
   <script src="js/site.js"></script>
+  <script src="js/discover.js"></script>
 </body>
 </html>

@@ -1,0 +1,10 @@
+[Unit]
+Description=Run X05 VPS database backup daily
+
+[Timer]
+OnCalendar=*-*-* 03:15:00 UTC
+Persistent=true
+Unit=x05-db-backup.service
+
+[Install]
+WantedBy=timers.target

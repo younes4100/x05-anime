@@ -5,13 +5,31 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://graphql.anilist.co; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+
+/admin
+  X-Robots-Tag: noindex,nofollow,noarchive
+  Cache-Control: no-store
+
+/admin/
+  X-Robots-Tag: noindex,nofollow,noarchive
+  Cache-Control: no-store
+
+/admin/index.html
+  X-Robots-Tag: noindex,nofollow,noarchive
+  Cache-Control: no-store
 
 /admin/*
   X-Robots-Tag: noindex,nofollow,noarchive
   Cache-Control: no-store
 
 /reset/*
+  X-Robots-Tag: noindex,nofollow,noarchive
+
+/open/*
+  X-Robots-Tag: noindex,nofollow,noarchive
+
+/pair/*
   X-Robots-Tag: noindex,nofollow,noarchive
 
 /web_reset/*

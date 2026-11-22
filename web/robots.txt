@@ -1,7 +1,11 @@
 User-agent: *
 Allow: /
+Disallow: /admin
 Disallow: /admin/
+Disallow: /admin/index.html
 Disallow: /web_reset/
 Disallow: /reset/
+Disallow: /open/
+Disallow: /pair/
 
 Sitemap: https://x05-anime.pages.dev/sitemap.xml

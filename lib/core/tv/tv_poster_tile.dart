@@ -1,0 +1,140 @@
+import 'package:flutter/material.dart';
+
+import '../models/media_item.dart';
+import '../stremio/stremio_poster_shape.dart';
+import '../theme/app_colors.dart';
+import '../playback/playback_prefs.dart';
+import '../ui/poster_card.dart';
+import 'tv_focusable.dart';
+
+/// Shared TV grid tile. Title placement and artwork follow poster settings;
+/// focus remains on the artwork itself.
+class TvPosterTile extends StatelessWidget {
+  const TvPosterTile({
+    super.key,
+    required this.title,
+    this.imageUrl,
+    this.wideImageUrl,
+    this.headers,
+    this.tags = const [],
+    this.qualityBadge,
+    this.dubBadge,
+    this.topLeftBadge,
+    this.scoreBadge,
+    this.genres = const [],
+    this.isAdult = false,
+    this.progressBadge,
+    this.topRightBadge,
+    this.logoItem,
+    required this.onTap,
+    this.onLongPress,
+    this.autofocus = false,
+  });
+
+  final String title;
+  final String? imageUrl;
+  final String? wideImageUrl;
+  final Map<String, String>? headers;
+  final List<String> tags;
+
+  /// Release quality drawn in the poster's top-right corner. See [PosterCard].
+  final String? qualityBadge;
+  final String? dubBadge;
+  final String? topLeftBadge;
+  final int? scoreBadge;
+  final List<String> genres;
+  final bool isAdult;
+  final String? progressBadge;
+  final Widget? topRightBadge;
+  final MediaItem? logoItem;
+
+  final VoidCallback onTap;
+  final VoidCallback? onLongPress;
+  final bool autofocus;
+
+  @override
+  Widget build(BuildContext context) {
+    final defaultWide = posterLayout(context) == PosterCardLayout.wide;
+    final aspect = logoItem == null
+        ? null
+        : stremioPosterAspect(logoItem!, landscape: defaultWide);
+    final wide = aspect == null ? defaultWide : aspect > 1;
+    final titleInside = posterTitleInside(context, wide: wide, item: logoItem);
+    return LayoutBuilder(
+      builder: (context, tileConstraints) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight:
+                  logoItem?.sourceId == 'stremio' &&
+                      !titleInside &&
+                      tileConstraints.maxHeight.isFinite
+                  ? (tileConstraints.maxHeight - 28)
+                        .clamp(0, double.infinity)
+                        .toDouble()
+                  : double.infinity,
+            ),
+            child: AspectRatio(
+              aspectRatio: aspect ?? (wide ? 16 / 9 : 2 / 3),
+              child: TvFocusable(
+                autofocus: autofocus,
+                variant: TvFocusVariant.float,
+                scale: 1.04,
+                borderRadius: 12,
+                onTap: onTap,
+                onLongPress: onLongPress,
+                semanticLabel: title,
+                child: LayoutBuilder(
+                  builder: (context, constraints) => PosterCard(
+                    title: title,
+                    logoItem: logoItem,
+                    imageUrl: imageUrl,
+                    wideImageUrl: wideImageUrl,
+                    headers: headers,
+                    tags: tags,
+                    qualityBadge: qualityBadge,
+                    dubBadge: dubBadge,
+                    topLeftBadge: topLeftBadge,
+                    scoreBadge: scoreBadge,
+                    genres: genres,
+                    isAdult: isAdult,
+                    progressBadge: progressBadge,
+                    topRightBadge: topRightBadge,
+                    cellWidth: constraints.maxWidth,
+                    showTitle: false,
+                    wideOverride: aspect == null ? null : wide,
+                    // Touch gestures are disabled on TV; TvFocusable handles OK-key
+                    // (including held-OK long-press when [onLongPress] is set).
+                    onTap: null,
+                    onLongPress: null,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          if (!titleInside) ...[
+            const SizedBox(height: 8),
+            // The focusable above already announces the title via semanticLabel.
+            ExcludeSemantics(
+              child: PosterCardTitle(
+                title: title,
+                logoItem: logoItem,
+                width: tileConstraints.maxWidth,
+                maxHeight: 20,
+                maxLines: 1,
+                inside: false,
+                textStyle: const TextStyle(
+                  color: AppColors.textSecondary,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
